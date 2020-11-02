@@ -1,0 +1,71 @@
+#bank
+bank_info={}
+while True:
+    choice=int(input("Welcome to Abis Bank, what do you want to do today? \n1)make a savings account \n2)display balance \n3)deposit money \n4)withdraw moeny \n5)create a fixed deposit \n6)end \nenter your choice"))
+    if choice==1:
+        age=int(input("enter your age"))
+        if age>=18:
+            name=str(input("enter your name"))
+            money=int(input("enter the amount of moeny to intially deposit(the minimum amount depositable is 1000)"))
+            if money>=1000:
+                bank_info[name]=money
+            else:
+                print("the depostied money is below the minimal amount of 1000, try depositing once again or come back after acquiring the minimal amount")
+        else:
+            print("the minimum age requirement isnt required")
+    elif choice==2:
+        name2=str(input("enter your name"))
+        for x in bank_info:
+            if x==name2:
+                print("your current balance is",bank_info[x])
+        else:
+            print("the account with your name isnt present")
+    elif choice==3:
+        name3=str(input("enter your name"))
+        for n in bank_info:
+            if n==name3:
+                print("your current bank balance is",bank_info[n])
+        for m in bank_info:
+            if m==name3:
+                money2=int(input("enter the amount of money that you want to deposit"))
+                if money2>bank_info[m]:
+                    print("the entered money is higher than the money already present in the account")
+                else:
+                    bank_info[m]+=money2
+                    print("your new balance is",bank_info[m])
+        else:
+            print("the name entered isnt present in our data bases, kindly re-enter")
+
+    elif choice==4:
+        name4 = str(input("enter your name"))
+        for t in bank_info:
+            if x==name4:
+                print("your balance is",bank_info[t])
+        for i in bank_info:
+            if i == name4:
+                money3 = int(input("enter the amount of money that you want to withdraw"))
+                if money3>bank_info[i]:
+                    print("the money entered is higher thant the money already present in the account")
+                else:
+                    bank_info[i] -= money3
+                    print("your new balance is", bank_info[i])
+                    break
+        else:
+            print("the name entered isnt present in our data bases, kindly re-enter")
+    elif choice==5:
+        print("our interest rate is 10%, we garuntee you that this is the best amount that you could ever find")
+        name_dep=str(input("enter your name to create a fixed deposit account"))
+        name_final=name_dep+"'s fixed deposit"
+        fixed_dep=int(input("enter the amount of money for the fixed deposit"))
+        years=int(input("enter the amount of years that you plan on keeping the money for"))
+        deposit_val_intial=(fixed_dep*0.1)*years
+        deposit_val_final=(fixed_dep+deposit_val_intial)
+        bank_info[name_final]=deposit_val_final
+        print(name_final,":",bank_info[name_final])
+        print("your fixed deposit of money",fixed_dep,"has been created with an intrest rate of 10% and for",years,"years")
+    elif choice==6:
+        print("thank you for considering abi bank, take care and dont forget to wash your hands")
+        break
+
+
+
